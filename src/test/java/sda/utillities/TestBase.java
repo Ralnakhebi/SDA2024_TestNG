@@ -32,10 +32,10 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown(){
-        if(driver!=null){
-            driver.quit();
-            driver = null;
-        }
+//        if(driver!=null){
+//            driver.quit();
+//            driver = null;
+//        }
     }
 
 

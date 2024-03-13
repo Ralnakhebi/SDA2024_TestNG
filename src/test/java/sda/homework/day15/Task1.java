@@ -45,6 +45,7 @@ public class Task1 extends TestBase {
                 welcomeMassage.getText().contains("successfully logged in"));
         WebElement logoutButton = driver.findElement(logout);
         sa.assertTrue(logoutButton.isDisplayed());
+        sa.assertAll();
 
 
     }
