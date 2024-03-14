@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Tests">
+    <test name="Positive Test">
+        <parameter name="positiveUsername" value="student">
+        </parameter>
+        <parameter name="positivePassword" value="Password123">
+        </parameter>
+        <classes>
+            <class name="sda.homework.day16.Task2">
+            </class>
+        </classes>
+    </test>
+    <test name="Negative Test 1">
+        <parameter name="username" value="incorrectUser">
+        </parameter>
+        <parameter name="password" value="Password123">
+        </parameter>
+        <classes>
+            <class name="sda.homework.day16.Task3">
+            </class>
+        </classes>
+    </test>
+    <test name="Negative Test 2">
+        <parameter name="username" value="student">
+        </parameter>
+        <parameter name="password" value="incorrectPassword">
+        </parameter>
+        <classes>
+            <class name="sda.homework.day16.Task3">
+            </class>
+        </classes>
+    </test>
+    <test name="Negative Test 3">
+        <parameter name="username" value="incorrectUser">
+        </parameter>
+        <parameter name="password" value="incorrectPassword">
+        </parameter>
+        <classes>
+            <class name="sda.homework.day16.Task3">
+            </class>
+        </classes>
+    </test>
+    <test name="Negative Test 4">
+    <parameter name="username" value="">
+    </parameter>
+    <parameter name="password" value="">
+    </parameter>
+    <classes>
+        <class name="sda.homework.day16.Task3">
+        </class>
+    </classes>
+</test>
+</suite>

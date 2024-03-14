@@ -41,56 +41,5 @@ public class Task2 extends TestBase {
         sa.assertAll();
 
     }
-    @Test
-    @Parameters({"negativeUsername","positivePassword2"})
-    public void negativeScenario(String negativeUsername, String positivePassword){
-        By usernameField = By.id("username");
-        By passwordField = By.id("password");
-        By submit = By.id("submit");
-        By error = By.id("error");
 
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
-        WebElement usernameInput = driver.findElement(usernameField);
-        WebElement passwordInput = driver.findElement(passwordField);
-        WebElement submitButton = driver.findElement(submit);
-        usernameInput.sendKeys(negativeUsername);
-        passwordInput.sendKeys(positivePassword);
-
-        submitButton.click();
-
-        SoftAssert sa = new SoftAssert();
-
-        WebElement errorMessage  =driver.findElement(error);
-        sa.assertTrue(errorMessage.isDisplayed());
-        sa.assertTrue(errorMessage.getText().contains("Your username is invalid!"));
-        sa.assertAll();
-
-    }
-
-    @Test
-    @Parameters({"positiveUsername2","negativePassword"})
-    public void negativeScenario2(String positiveUsername, String negativePassword){
-        By usernameField = By.id("username");
-        By passwordField = By.id("password");
-        By submit = By.id("submit");
-        By error = By.id("error");
-
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
-        WebElement usernameInput = driver.findElement(usernameField);
-        WebElement passwordInput = driver.findElement(passwordField);
-        WebElement submitButton = driver.findElement(submit);
-        usernameInput.sendKeys(positiveUsername);
-        passwordInput.sendKeys(negativePassword);
-
-        submitButton.click();
-
-        SoftAssert sa = new SoftAssert();
-        WebElement errorMessage  =driver.findElement(error);
-        sa.assertTrue(errorMessage.isDisplayed());
-        sa.assertTrue(errorMessage.getText().contains("Your password is invalid!"));
-        sa.assertAll();
-
-    }
 }
