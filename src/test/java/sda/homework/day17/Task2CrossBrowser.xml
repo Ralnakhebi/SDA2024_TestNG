@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Chrome Browser Test ">
+        <parameter name="browser" value="Chrome"></parameter>
+
+        <classes>
+            <class name="sda.homework.day17.Task2">
+                <methods>
+                    <include name="test"></include>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+    <test name="Edge Browser Test">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="sda.homework.day17.Task2">
+                <methods>
+                    <include name="test"></include>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
