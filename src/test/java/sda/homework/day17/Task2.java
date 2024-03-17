@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import sda.utillities.ParameterBrowserTestBase;
 
+import java.util.List;
+
 public class Task2 extends ParameterBrowserTestBase {
 
     //Go to URL: http://crossbrowsertesting.github.io/todo-app.html
@@ -23,19 +25,29 @@ public class Task2 extends ParameterBrowserTestBase {
     By insertTodoById = By.id("todotext");
     By countByXpath = By.xpath("//*[@class='ng-binding']");
     By archiveByXpath= By.xpath("//*[@ng-click='todoList.archive()']");
+    By listTodoByXpath = By.xpath("//span[@class='done-false']");
     @Test
-    public void test(){
+    public void test() throws InterruptedException {
         driver.get("http://crossbrowsertesting.github.io/todo-app.html");
+        SoftAssert sa = new SoftAssert();
+
+        List<WebElement> todoList;
+        sa.assertTrue(driver.findElements(listTodoByXpath).size()==5);
+
         driver.findElement(todo4ByName).click();
         driver.findElement(todo5ByName).click();
 
-        SoftAssert sa = new SoftAssert();
-
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("3"));
+        Thread.sleep(1000);
+
+        sa.assertTrue(driver.findElements(listTodoByXpath).size()==3);
 
         driver.findElement(archiveByXpath).click();
         driver.findElement(insertTodoById).sendKeys("New Task ", Keys.ENTER);
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("4"));
+        Thread.sleep(1000);
+
+        sa.assertTrue(driver.findElements(listTodoByXpath).size()==4);
         sa.assertAll();
     }
 }
