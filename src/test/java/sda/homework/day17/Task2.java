@@ -37,7 +37,6 @@ public class Task2 extends ParameterBrowserTestBase {
         driver.findElement(todo5ByName).click();
         //Assert the size of the TodoList is 3 after clicking 2 Task
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("3"));
-
         sa.assertTrue(driver.findElements(listTodoByXpath).size()==3);
 
         driver.findElement(archiveByXpath).click();
@@ -46,7 +45,6 @@ public class Task2 extends ParameterBrowserTestBase {
         //Assert the size of the TodoList is 4 after clicking 2 Task and archive them
         //and add new task..
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("4"));
-
         sa.assertTrue(driver.findElements(listTodoByXpath).size()==4);
         sa.assertAll();
     }
