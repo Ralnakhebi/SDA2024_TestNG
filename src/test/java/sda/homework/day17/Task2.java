@@ -26,6 +26,9 @@ public class Task2 extends ParameterBrowserTestBase {
     By countByXpath = By.xpath("//*[@class='ng-binding']");
     By archiveByXpath= By.xpath("//*[@ng-click='todoList.archive()']");
     By listTodoByXpath = By.xpath("//span[@class='done-false']");
+
+    By listDoneTaskByXpath = By.xpath("//span[@class='done-true']");
+
     @Test
     public void test() throws InterruptedException {
         driver.get("http://crossbrowsertesting.github.io/todo-app.html");
@@ -36,6 +39,7 @@ public class Task2 extends ParameterBrowserTestBase {
         driver.findElement(todo4ByName).click();
         driver.findElement(todo5ByName).click();
         //Assert the size of the TodoList is 3 after clicking 2 Task
+        sa.assertTrue(driver.findElements(listDoneTaskByXpath).size()==2);
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("3"));
         sa.assertTrue(driver.findElements(listTodoByXpath).size()==3);
 
