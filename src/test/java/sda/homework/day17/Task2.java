@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import sda.utillities.ParameterBrowserTestBase;
-import sda.utillities.TestBase;
 
 public class Task2 extends ParameterBrowserTestBase {
 
