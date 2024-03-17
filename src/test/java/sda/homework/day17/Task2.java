@@ -30,22 +30,22 @@ public class Task2 extends ParameterBrowserTestBase {
     public void test() throws InterruptedException {
         driver.get("http://crossbrowsertesting.github.io/todo-app.html");
         SoftAssert sa = new SoftAssert();
-
-        List<WebElement> todoList;
+        //Assert the size of the TodoList is 5
         sa.assertTrue(driver.findElements(listTodoByXpath).size()==5);
 
         driver.findElement(todo4ByName).click();
         driver.findElement(todo5ByName).click();
-
+        //Assert the size of the TodoList is 3 after clicking 2 Task
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("3"));
-        Thread.sleep(1000);
 
         sa.assertTrue(driver.findElements(listTodoByXpath).size()==3);
 
         driver.findElement(archiveByXpath).click();
+
         driver.findElement(insertTodoById).sendKeys("New Task ", Keys.ENTER);
+        //Assert the size of the TodoList is 4 after clicking 2 Task and archive them
+        //and add new task..
         sa.assertTrue(driver.findElement(countByXpath).getText().contains("4"));
-        Thread.sleep(1000);
 
         sa.assertTrue(driver.findElements(listTodoByXpath).size()==4);
         sa.assertAll();
