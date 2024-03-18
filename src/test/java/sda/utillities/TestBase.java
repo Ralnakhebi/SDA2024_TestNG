@@ -26,16 +26,15 @@ public class TestBase {
     public void SetUp(){
         driver =new ChromeDriver();
         driver.manage().window().maximize();
-        //driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
     public void tearDown(){
-//        if(driver!=null){
-//            driver.quit();
-//            driver = null;
-//        }
+        if(driver!=null){
+            driver.quit();
+            driver = null;
+        }
     }
 
 

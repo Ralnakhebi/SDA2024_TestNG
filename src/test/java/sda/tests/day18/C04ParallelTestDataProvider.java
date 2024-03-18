@@ -1,19 +1,18 @@
-package sda.tests.day17;
+package sda.tests.day18;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import sda.utillities.TestBase;
 
-public class C02DataProvider extends TestBase {
+import java.time.Duration;
 
-
-    //Go to URL: https://opensource-demo.orangehrmlive.com/
-    //Login with negative credentilas by Data Provider.
-    //Then assert that ''Invalid credentials'’ is displayed.
+public class C04ParallelTestDataProvider {
 
     By userNameField = By.name("username");
     By passwordName = By.name("password");
@@ -21,21 +20,25 @@ public class C02DataProvider extends TestBase {
     By textByXpath = By.xpath("//*[.='Invalid credentials']");
     @Test(dataProvider = "invalidCredentials")
     public void negativeLoginTest(String userName, String password) throws InterruptedException {
+        WebDriver driver =new ChromeDriver();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         driver.get("https://opensource-demo.orangehrmlive.com/");
         driver.findElement(userNameField).sendKeys(userName);
         driver.findElement(passwordName).sendKeys(password);
         driver.findElement(buttonTag).click();
 
         SoftAssert sa = new SoftAssert();
-        Thread.sleep(500);
-        WebDriverWait wait = (WebDriverWait) driver;
+        Thread.sleep(1000);
 
         WebElement invalidText =driver.findElement(textByXpath);
         sa.assertTrue(invalidText.isDisplayed());
         sa.assertAll();
+        System.out.println(Thread.currentThread().threadId());
     }
 
-    @DataProvider(name = "invalidCredentials")
+    @DataProvider(name = "invalidCredentials",parallel = true)
     public Object[][] getData(){
         return new Object[][]{
                 {"1Admin","admin123"},
@@ -44,7 +47,7 @@ public class C02DataProvider extends TestBase {
                 {"Admin","asr"},
                 {"asef","admin123"}
         };
-        }
+    }
 
 
 }
