@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Remoo/IdeaProjects/SDA2024_TestNG/src/test/java/sda/tests/day19/C04AllureTest02.java">
+        <classes>
+            <class name="sda.tests.day19.C04AllureTest02"><methods><include name="test1"/>
+                <include name="test2"/>
+                <include name="test3"/>
+                <include name="test4"/>
+                <include name="test5"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
